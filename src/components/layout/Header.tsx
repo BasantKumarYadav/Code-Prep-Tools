@@ -25,11 +25,22 @@ export default function Header() {
         </Link>
 
         <nav className="desktop-navigation" aria-label="Main navigation">
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) =>
+            item.disabled ? (
+              <span
+                key={item.href}
+                className="nav-item disabled"
+                aria-disabled="true"
+              >
+                {item.label}
+                <span className="coming-soon">Coming Soon</span>
+              </span>
+            ) : (
+              <Link key={item.href} href={item.href} className="nav-item">
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="header-actions">

@@ -18,6 +18,7 @@ export const navigation = [
   {
     label: "Interview Prep",
     href: "/interview",
+    disabled: true,
   },
 ];
 

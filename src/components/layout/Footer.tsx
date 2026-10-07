@@ -47,8 +47,7 @@ export default function Footer() {
 
       <div className="container footer-bottom">
         <p>
-          © {new Date().getFullYear()} CodePrepTools. All rights
-          reserved.
+          © 2026 CodePrepTools. All rights reserved.
         </p>
       </div>
     </footer>

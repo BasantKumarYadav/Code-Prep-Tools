@@ -24,7 +24,7 @@ export default function ContactPage() {
         </p>
 
         <p>
-          <strong>hello@codepreptools.com</strong>
+          <strong>basantbk024@gmail.com</strong>
         </p>
       </div>
     </section>

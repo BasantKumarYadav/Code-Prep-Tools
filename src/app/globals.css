@@ -50,6 +50,11 @@ html.dark .json-textarea {
   color: #e2e8f0;
 }
 
+.textSize {
+  width: 75%;
+  height: 230px;
+}
+
 html.dark .output-textarea,
 html.dark .json-tree {
   background: #020617;
@@ -107,7 +112,6 @@ html.dark .drop-hint {
   height: 34px;
   border-radius: 8px;
   background: var(--primary);
-  color: white;
 }
 
 .desktop-navigation {
@@ -126,6 +130,51 @@ html.dark .drop-hint {
 .desktop-navigation a:hover,
 .mobile-navigation a:hover {
   color: var(--primary);
+}
+
+.nav-item {
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Disabled Interview Prep */
+.nav-item.disabled {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Coming Soon tooltip */
+.coming-soon {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+
+  background: #111827;
+  color: #ffffff;
+
+  padding: 5px 9px;
+  border-radius: 6px;
+
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+/* Show only when hovering Interview Prep */
+.nav-item.disabled:hover .coming-soon {
+  opacity: 1;
+  visibility: visible;
 }
 
 .header-actions {
