@@ -47,9 +47,8 @@ export default function Footer() {
 
       <div className="container footer-bottom">
         <p>
-          © 2026 CodePrepTools. All rights reserved.
+          © 2026 CodePrepTools · Built for Developers, by Basant Kumar Yadav
         </p>
-        <p>Developed By Basant Kumar Yadav</p>
       </div>
     </footer>
   );
