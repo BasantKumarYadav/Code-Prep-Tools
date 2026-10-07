@@ -49,6 +49,7 @@ export default function Footer() {
         <p>
           © 2026 CodePrepTools. All rights reserved.
         </p>
+        <p>Developed By Basant Kumar Yadav</p>
       </div>
     </footer>
   );
