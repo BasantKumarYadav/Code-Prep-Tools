@@ -12,33 +12,47 @@ export const metadata: Metadata = {
     template: "%s | CodePrepTools",
   },
 
-  description: siteConfig.description,
+  //description: siteConfig.description,
 
-  applicationName: siteConfig.name,
+  description: "Free online developer tools and programming interview preparation resources for developers.",
+
+  applicationName: "CodePrepTools",
+
+  keywords: [
+    "developer tools",
+    "programming tools",
+    "JSON formatter",
+    "JSON validator",
+    "JSON minifier",
+    "coding interview preparation",
+    "developer interview questions",
+  ],
 
   authors: [
     {
-      name: siteConfig.author,
+      name: "Basant Kumar Yadav",
     },
   ],
 
+  creator: "Basant Kumar Yadav",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
-    title: "CodePrepTools - Free Developer Tools",
-    description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
     type: "website",
+    siteName: "CodePrepTools",
+    title: "CodePrepTools - Free Developer Tools & Interview Prep",
+    description: "Free online developer tools and programming interview preparation resources.",
+    url: siteConfig.url,
   },
 
   twitter: {
     card: "summary_large_image",
     title: "CodePrepTools",
     description: siteConfig.description,
-  },
-
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 

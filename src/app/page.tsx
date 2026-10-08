@@ -11,7 +11,12 @@ export default function HomePage() {
     <>
       <section className="home-hero">
         <div className="container">
-          <p className="eyebrow">Developer Tools & Interview Prep</p>
+          <p className="eyebrow">
+            CodePrepTools provides free online developer tools,
+            programming utilities, and interview preparation
+            resources to help developers work faster and prepare
+            for technical interviews.
+          </p>
 
           <h1>
             Simple tools for

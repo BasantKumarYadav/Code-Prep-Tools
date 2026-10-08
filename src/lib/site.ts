@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "CodePrepTools",
-  url: "https://codepreptools.com",
+  url: "https://code-prep-tools.vercel.app",
   description:
     "Free developer tools and interview preparation resources for software developers.",
   author: "CodePrepTools",

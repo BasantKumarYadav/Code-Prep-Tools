@@ -22,7 +22,8 @@ import {
   validateJson,
 } from "@/lib/json";
 
-import JsonTree from "@/components/common/JsonTree";
+import JsonTree1 from "@/components/common/JsonTree";
+import JsonTree from "@/app/tools/json-formatter/JsonTree";
 
 const SAMPLE_JSON = `{
   "name": "CodePrepTools",
@@ -82,10 +83,22 @@ export default function JsonFormatter() {
    * JSON.parse() is therefore NEVER called directly
    * inside JSX.
    */
-  const parsedOutput = useMemo(
-    () => tryParseJson(output),
-    [output]
-  );
+  //const parsedOutput = useMemo(
+  //  () => tryParseJson(output),
+  //  [output]
+  //);
+
+  const parsedOutput = useMemo(() => {
+  if (!output.trim()) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(output);
+  } catch {
+    return null;
+  }
+}, [output]);
 
   const inputStats = useMemo(
     () => ({
@@ -128,15 +141,15 @@ export default function JsonFormatter() {
     const result =
       action === "format"
         ? formatJson(
-            input,
-            indentSize,
-            sortKeys
-          )
+          input,
+          indentSize,
+          sortKeys
+        )
         : action === "minify"
           ? minifyJson(
-              input,
-              sortKeys
-            )
+            input,
+            sortKeys
+          )
           : validateJson(input);
 
     if (result.success) {
@@ -393,7 +406,7 @@ export default function JsonFormatter() {
 
           <button
             type="button"
-            className="secondary-button"
+            className="secondary-button icon-button"
             onClick={clearAll}
           >
             <Trash2 size={16} />
@@ -447,18 +460,17 @@ export default function JsonFormatter() {
 
       {/* Editor */}
       <div
-        className={`json-editor-grid ${
-          dragging
-            ? "is-dragging"
-            : ""
-        }`}
+        className={`json-editor-grid ${dragging
+          ? "is-dragging"
+          : ""
+          }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-      >
+        onDrop={handleDrop}>
+
         {/* Input */}
-        <div className="editor-panel">
-          <div className="panel-header">
+        <div className="editor-panel input-panel">
+          <div className="panel-header" style={{ marginBottom: "5px" }}>
             <div>
               <h2>Input JSON</h2>
 
@@ -488,8 +500,8 @@ export default function JsonFormatter() {
             placeholder={`Paste your JSON here...
             Example:
             {
-              "name": "John",
-              "age": 30
+              "name": "Basant",
+              "age": 23
             }`}
             spellCheck={false}
             className="json-textarea textSize"
@@ -536,7 +548,7 @@ export default function JsonFormatter() {
         </div>
 
         {/* Output */}
-        <div className="editor-panel">
+        <div className="editor-panel output-panel">
           <div className="panel-header">
             <div>
               <h2>Output</h2>
@@ -563,9 +575,7 @@ export default function JsonFormatter() {
                   <Copy size={15} />
                 )}
 
-                {copied
-                  ? "Copied"
-                  : "Copy"}
+                {copied ? "Copied" : "Copy"}
               </button>
 
               <button
@@ -580,14 +590,20 @@ export default function JsonFormatter() {
             </div>
           </div>
 
-          <textarea
-            value={output}
-            readOnly
-            placeholder="Formatted JSON will appear here."
-            spellCheck={false}
-            className="json-textarea output-textarea textSize"
-            aria-label="Formatted JSON output"
-          />
+          {/* JSON Tree Output */}
+          <div className="json-tree-output">
+            {!output ? (
+              <div className="empty-output">
+                Formatted JSON will appear here.
+              </div>
+            ) : parsedOutput !== null ? (
+              <JsonTree value={parsedOutput} />
+            ) : (
+              <div className="empty-output">
+                Unable to display JSON tree.
+              </div>
+            )}
+          </div>
 
           <div className="filename-control">
             <label htmlFor="filename">
@@ -598,9 +614,7 @@ export default function JsonFormatter() {
               id="filename"
               value={filename}
               onChange={(event) =>
-                setFilename(
-                  event.target.value
-                )
+                setFilename(event.target.value)
               }
             />
           </div>
@@ -647,7 +661,7 @@ export default function JsonFormatter() {
           <div className="tree-panel">
             <h2>JSON Tree</h2>
 
-            <JsonTree
+            <JsonTree1
               value={parsedOutput}
             />
           </div>

@@ -29,7 +29,8 @@ html.dark .indent-control select,
 html.dark .toolbar-options select {
   background: #0f172a;
   color: #f8fafc;
-  border-color: #334155;
+  border-color: #3c444f;
+  border: 1px solid;
 }
 
 html.dark .desktop-navigation a,
@@ -51,8 +52,10 @@ html.dark .json-textarea {
 }
 
 .textSize {
-  width: 75%;
-  height: 230px;
+  width: 100%;
+  max-width: 690px;
+  min-height: 511px;
+  max-height: 650px;
 }
 
 html.dark .output-textarea,
@@ -77,6 +80,47 @@ html.dark .tool-card-icon {
 
 html.dark .drop-hint {
   color: #94a3b8;
+}
+
+.toolbar-left {
+  display: flex;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+
+.action-buttons,
+.output-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.output-actions {
+  margin-bottom: 5px;
+}
+
+.icon-button,
+.small-button {
+  .lucide {
+    padding-right: 7px;
+  }
+}
+
+.json-editor-grid {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+/*.editor-panel {
+  width: 100%;
+}*/
+
+.output-panel {
+  width: 100%;
+}
+
+.input-panel {
+  width: 60%;
 }
 
 .site-header {
@@ -263,7 +307,7 @@ html.dark .drop-hint {
   font-size: clamp(36px, 6vw, 52px);
 }
 
-.page-heading > p:last-child {
+.page-heading>p:last-child {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.7;
@@ -273,11 +317,11 @@ html.dark .drop-hint {
   margin-top: 48px;
 }
 
-.tool-category > h2 {
+.tool-category>h2 {
   margin-bottom: 8px;
 }
 
-.tool-category > p {
+.tool-category>p {
   color: var(--muted);
 }
 
@@ -590,5 +634,273 @@ html.dark .drop-hint {
 
   .filename-control input {
     width: 100%;
+  }
+}
+
+
+
+/* =========================================
+   JSON TREE VIEW
+   ========================================= */
+
+.json-tree-output {
+  min-height: 420px;
+  max-height: 650px;
+  overflow: auto;
+
+  /*padding: 14px 12px;*/
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Main tree */
+
+.json-tree {
+  min-width: max-content;
+  color: #202124;
+}
+
+/* Every JSON line */
+
+.json-tree-row {
+  min-height: 20px;
+
+  display: flex;
+  align-items: flex-start;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Parent object / array row */
+
+.json-tree-parent {
+  align-items: center;
+}
+
+/* Expand / collapse button */
+
+.json-expand-button {
+  width: 14px;
+  height: 14px;
+
+  flex: 0 0 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin-right: 4px;
+
+  border: 1px solid #b8c0cc;
+  border-radius: 2px;
+
+  background: #ffffff;
+
+  color: #4f5b6b;
+
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 600;
+
+  line-height: 12px;
+
+  cursor: pointer;
+}
+
+.json-expand-button:hover {
+  background: #f1f5f9;
+  border-color: #8b96a5;
+}
+
+/* Keeps closing bracket aligned when needed */
+
+.json-expand-placeholder {
+  width: 18px;
+  flex: 0 0 18px;
+}
+
+/* JSON key */
+
+.json-key {
+  color: #0758a8;
+
+  font-weight: 400;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Colon */
+
+.json-colon {
+  color: #444;
+
+  margin-right: 5px;
+}
+
+/* Brackets */
+
+.json-bracket {
+  color: #222;
+
+  font-weight: 400;
+}
+
+/* Primitive values */
+
+.json-value {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* String */
+
+.json-string {
+  color: #16833b;
+}
+
+/* Number */
+
+.json-number {
+  color: #202124;
+}
+
+/* Boolean */
+
+.json-boolean {
+  color: #a23b00;
+}
+
+/* Null */
+
+.json-null {
+  color: #7b3fa1;
+}
+
+/* Comma */
+
+.json-comma {
+  color: #333;
+}
+
+/* Nested content */
+
+.json-tree-children {
+  width: 100%;
+}
+
+/* Closing bracket */
+
+.json-tree-closing {
+  align-items: flex-start;
+}
+
+/* Empty objects / arrays */
+
+.json-tree-node>.json-tree-closing:first-child {
+  margin-top: 0;
+}
+
+
+/* =========================================
+   EMPTY OUTPUT
+   ========================================= */
+
+.empty-output {
+  min-height: 380px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #7a8491;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   DARK MODE
+   ========================================= */
+
+.dark .json-tree-output {
+  background: #111827;
+  border-color: #374151;
+}
+
+.dark .json-tree {
+  color: #e5e7eb;
+}
+
+.dark .json-expand-button {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+.dark .json-expand-button:hover {
+  background: #374151;
+}
+
+.dark .json-bracket {
+  color: #e5e7eb;
+}
+
+.dark .json-colon,
+.dark .json-comma {
+  color: #d1d5db;
+}
+
+.dark .json-number {
+  color: #e5e7eb;
+}
+
+.dark .empty-output {
+  color: #9ca3af;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .json-tree-output {
+    min-height: 350px;
+    max-height: 550px;
+
+    padding: 12px 8px;
+
+    font-size: 12px;
+  }
+
+  .json-expand-button {
+    width: 13px;
+    height: 13px;
+
+    flex-basis: 13px;
+
+    font-size: 10px;
+  }
+
+  .json-tree-row {
+    min-height: 19px;
   }
 }
